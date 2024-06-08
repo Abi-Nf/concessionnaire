@@ -68,7 +68,15 @@ export const Form = ({ children, carId, onSent }: PropsWithChildren<Props>) => {
   return (
     <form ref={formRef} onSubmit={handleSubmit(handleDataToSend)}>
       <div className="pt-5 flex flex-col gap-4 relative">
-        <input type="text" name="car_id" value={carId} disabled hidden />
+        {carId ? (
+          <input
+            type="text"
+            name="car_id"
+            value={carId}
+            defaultValue={carId}
+            hidden
+          />
+        ) : null}
         <div className="flex items-center gap-2">
           <TextField
             {...register('firstName', { required: 'required value' })}
