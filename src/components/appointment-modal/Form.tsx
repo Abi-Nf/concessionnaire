@@ -23,7 +23,10 @@ const schema = z.object({
 
 export const Form = ({ children, carId, onSent }: PropsWithChildren<Props>) => {
   const formRef = useRef<HTMLFormElement>(null);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<{
+    type: 'success' | 'error';
+    message: string;
+  } | null>(null);
   const {
     register,
     handleSubmit,
@@ -53,12 +56,13 @@ export const Form = ({ children, carId, onSent }: PropsWithChildren<Props>) => {
         email: data.email,
       });
       if (response.id) onSent();
+      setOpen({ type: 'success', message: 'contact sent !' });
     } catch (e) {
-      setOpen(true);
+      setOpen({ type: 'error', message: 'cannot send contact' });
     }
   };
 
-  const handleClose = () => setOpen(false);
+  const handleClose = () => setOpen(null);
 
   const registerDate = () => {
     const { onChange, ...r } = register('date');
@@ -109,14 +113,18 @@ export const Form = ({ children, carId, onSent }: PropsWithChildren<Props>) => {
         />
       </div>
       {children}
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+      <Snackbar
+        open={open !== null}
+        autoHideDuration={6000}
+        onClose={handleClose}
+      >
         <Alert
           variant="filled"
-          severity="error"
+          severity={open?.type}
           onClose={handleClose}
           sx={{ width: '100%' }}
         >
-          Could not send the form
+          {open?.message}
         </Alert>
       </Snackbar>
     </form>
