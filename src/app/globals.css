@@ -11,3 +11,7 @@ header {
   background-color: black !important;
   color: #fff !important;
 }
+
+.display-none-scrollbar::-webkit-scrollbar {
+  display: none;
+}

@@ -20,7 +20,7 @@ export const BrandList = ({ onSelect }: Props) => {
   });
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 max-w-[60%] overflow-x-auto display-none-scrollbar">
       {data?.map((v) => (
         <div
           key={v.id}
