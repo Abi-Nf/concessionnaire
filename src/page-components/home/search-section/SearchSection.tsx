@@ -30,11 +30,17 @@ export const SearchSection = () => {
         </h2>
         <BrandList onSelect={search.handleSelectBrand} />
       </div>
-      <div className="grid grid-cols-4 py-5 px-8 gap-4">
-        {search.result.map((v, i) => (
-          <CardCar key={i} car={v} />
-        ))}
-      </div>
+      {search.result.length > 0 ? (
+        <div className="grid grid-cols-4 py-5 px-8 gap-4">
+          {search.result.map((v, i) => (
+            <CardCar key={i} car={v} />
+          ))}
+        </div>
+      ) : (
+        <div className="w-full h-[15rem] flex items-center justify-center text-center">
+          <span className="font-bold text-lg">No content to show !</span>
+        </div>
+      )}
     </div>
   );
 };
