@@ -16,7 +16,7 @@ const poppins = Poppins({
 export const SearchSection = () => {
   const { data } = useQuery({
     queryKey: ['get-6-cars-sample'],
-    queryFn: () => apiProvider.car.all().then((v) => v.slice(0, 6)),
+    queryFn: () => apiProvider.car.all().then((v) => v.slice(0, 8)),
   });
   const search = useSearch(data);
   return (
