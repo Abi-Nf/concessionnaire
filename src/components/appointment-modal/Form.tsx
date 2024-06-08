@@ -23,7 +23,7 @@ const schema = z.object({
     .string({ required_error: 'required value' })
     .min(1, 'required value'),
   email: z.string().email(),
-  tel: z.string({ required_error: 'required value' }).min(1, 'required value'),
+  tel: z.string({ required_error: 'required value' }),
   date: z.string().datetime(),
 });
 

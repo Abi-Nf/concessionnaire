@@ -33,7 +33,11 @@ export const BrandList = ({ onSelect }: Props) => {
             draggable={false}
             className="h-[3rem] object-fit"
           />
-          <span className={fontStyle.className + ' text-[1rem] font-extrabold'}>
+          <span
+            className={
+              fontStyle.className + ' text-[1rem] font-extrabold text-center'
+            }
+          >
             {v.name}
           </span>
         </div>

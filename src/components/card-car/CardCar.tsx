@@ -46,7 +46,10 @@ export const CardCar = ({ car = {} as CarData }: Props) => {
           <span className="text-sm font-semibold text-zinc-300">
             {car.model}, {car.engineType}
           </span>
-          <p className="line-clamp-2 text-zinc-400">{car.description}</p>
+          <p
+            className="line-clamp-2 text-zinc-400 "
+            dangerouslySetInnerHTML={{ __html: car.description }}
+          ></p>
         </div>
 
         <div className="pt-2 flex items-center text-gray-800 gap-4 justify-end">

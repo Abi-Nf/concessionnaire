@@ -19,7 +19,9 @@ export const CarList = () => (
       <FunctionField
         source={'description'}
         label={'Description'}
-        render={(record: CarData) => `${record.description.slice(0, 70)}...`}
+        render={(record: CarData) =>
+          `${record.description?.slice(0, 70) || ''}...`
+        }
         className="custom-card-child-car"
       />
       <NumberField source="price" className="custom-card-child-car" />
