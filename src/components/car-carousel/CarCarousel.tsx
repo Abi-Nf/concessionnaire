@@ -11,7 +11,7 @@ export const CarCarousel = () => {
   const [currentIndex, setImgIndex] = useState(0);
   const { data, isError, isLoading } = useQuery({
     queryKey: ['list-cars-for-carousel'],
-    queryFn: () => apiProvider.car.all(),
+    queryFn: () => apiProvider.car.getFavorites(),
   });
 
   const settings: Settings = {

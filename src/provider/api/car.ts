@@ -35,6 +35,10 @@ export class Car extends BaseApi<CarData['id'], CarData, CarCreatePayload> {
     super('car');
   }
 
+  async getFavorites(): Promise<CarData[]> {
+    return (await apiClient.get(this.resource_name + '/fav')).data;
+  }
+
   async search(params: ParamSearch): Promise<CarData[]> {
     const queries = new URLSearchParams(params as Record<string, string>);
     return (
