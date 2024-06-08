@@ -1,3 +1,4 @@
+import { AdminData } from 'provider/api/admin';
 import { AuthProvider } from 'react-admin';
 import { apiClient } from '../client';
 
@@ -13,11 +14,18 @@ export const authProvider: AuthProvider = {
     }
     return Promise.reject();
   },
-  checkAuth: () => {
+  checkAuth: async () => {
     const token = localStorage.getItem('token');
-    if (token) {
+    const res = await apiClient.get<AdminData>('/auth/whoami', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
+
+    if (token && res.data.id) {
       return Promise.resolve();
     }
+    localStorage.removeItem('token');
     return Promise.reject();
   },
   checkError: (error) => {
@@ -29,7 +37,7 @@ export const authProvider: AuthProvider = {
   },
   getPermissions: () => Promise.resolve(),
   getIdentity: async () => {
-    const res = await apiClient.get('/auth/whoami', {
+    const res = await apiClient.get<AdminData>('/auth/whoami', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
@@ -37,7 +45,7 @@ export const authProvider: AuthProvider = {
 
     return {
       id: res.data.id,
-      fullName: res.data.email,
+      fullName: res.data.lastName,
     };
   },
   logout: () => {

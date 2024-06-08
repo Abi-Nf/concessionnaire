@@ -67,6 +67,7 @@ export class BaseApi<
   async getManyById(ids: Id[]): Promise<Data[]> {
     return (
       await apiClient.get(this.resource_name + '/ids', {
+        headers: this.headers,
         params: {
           ids,
         },
@@ -77,6 +78,7 @@ export class BaseApi<
   async deleteManyById(ids: Id[]): Promise<Data[]> {
     return (
       await apiClient.delete(this.resource_name + '/ids', {
+        headers: this.headers,
         params: {
           ids,
         },

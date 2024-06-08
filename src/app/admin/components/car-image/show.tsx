@@ -5,14 +5,19 @@ import {
   SimpleShowLayout,
   TextField,
 } from 'react-admin';
-
+import '../car-type/list.css';
 export const CarImageShow = () => (
   <Show>
     <SimpleShowLayout>
-      <TextField source="id" />
-      <TextField source="imageUrl" />
-      <ReferenceField source="carId" reference="car" link={'show'} />
+      <TextField source="id" className="show" />
+      <TextField source="imageUrl" className="show" />
+      <ReferenceField
+        source="carId"
+        reference="car"
+        link={'show'}
+        className="show"
+      />
     </SimpleShowLayout>
-    <DeleteButton label={'Delete'} />
+    <DeleteButton label={'Delete'} className="delete" />
   </Show>
 );

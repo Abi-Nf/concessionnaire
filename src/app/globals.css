@@ -6,3 +6,8 @@
   outline: none !important;
   scroll-behavior: smooth;
 }
+
+header {
+  background-color: black !important;
+  color: #fff !important;
+}

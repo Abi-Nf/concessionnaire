@@ -1,11 +1,18 @@
+import { Box, Card } from '@mui/material';
 import { Datagrid, List, TextField } from 'react-admin';
+import './list.css';
 
 export const CarTypeList = () => (
-  <List>
-    <Datagrid rowClick="show">
-      <TextField source="id" />
-      <TextField source="name" />
-      <TextField source="description" />
-    </Datagrid>
-  </List>
+  <Card>
+    <List>
+      <Datagrid rowClick="show" className="custom-card">
+        <TextField source="id" className="custom-card-child"></TextField>
+        <TextField source="name" className="custom-card-child"></TextField>
+        <TextField
+          source="description"
+          className="custom-card-child"
+        ></TextField>
+      </Datagrid>
+    </List>
+  </Card>
 );
