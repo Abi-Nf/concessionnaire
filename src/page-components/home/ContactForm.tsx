@@ -7,9 +7,9 @@ import { Alert, Button, Snackbar, TextField } from '@mui/material';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 const schema = z.object({
-  name: z.string(),
+  name: z.string().min(1, 'required value'),
   email: z.string().email(),
-  message: z.string(),
+  message: z.string().min(1, 'required value'),
 });
 
 type FormInput = z.infer<typeof schema>;

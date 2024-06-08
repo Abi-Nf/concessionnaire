@@ -13,11 +13,17 @@ interface Props {
 }
 
 const schema = z.object({
-  firstName: z.string({ required_error: 'required value' }),
-  from_name: z.string({ required_error: 'required value' }),
-  message: z.string({ required_error: 'required value' }),
+  firstName: z
+    .string({ required_error: 'required value' })
+    .min(1, 'required value'),
+  from_name: z
+    .string({ required_error: 'required value' })
+    .min(1, 'required value'),
+  message: z
+    .string({ required_error: 'required value' })
+    .min(1, 'required value'),
   email: z.string().email(),
-  tel: z.string({ required_error: 'required value' }),
+  tel: z.string({ required_error: 'required value' }).min(1, 'required value'),
   date: z.string().datetime(),
 });
 
