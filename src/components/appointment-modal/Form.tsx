@@ -62,9 +62,9 @@ export const Form = ({ children, carId, onSent }: PropsWithChildren<Props>) => {
         email: data.email,
       });
       if (response.id) onSent();
-      setOpen({ type: 'success', message: 'contact sent !' });
+      setOpen({ type: 'success', message: 'appointment sent !' });
     } catch (e) {
-      setOpen({ type: 'error', message: 'cannot send contact' });
+      setOpen({ type: 'error', message: 'cannot send appointment' });
     }
   };
 

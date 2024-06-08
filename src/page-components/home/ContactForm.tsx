@@ -16,7 +16,10 @@ type FormInput = z.infer<typeof schema>;
 
 export const ContactForm = () => {
   const form = useRef<HTMLFormElement>(null);
-  const [cantSend, cannotSend] = useState(false);
+  const [open, setOpen] = useState<{
+    type: 'success' | 'error';
+    message: string;
+  } | null>(null);
   const {
     register,
     handleSubmit,
@@ -30,8 +33,9 @@ export const ContactForm = () => {
     try {
       await sendContact(form.current as HTMLFormElement);
       reset();
+      setOpen({ type: 'success', message: 'contact sent !' });
     } catch (e) {
-      cannotSend(true);
+      setOpen({ type: 'error', message: 'Cannot send contact' });
     }
   };
 
@@ -42,7 +46,7 @@ export const ContactForm = () => {
     };
   };
 
-  const removeSnackBar = () => cannotSend(false);
+  const removeSnackBar = () => setOpen(null);
 
   return (
     <form
@@ -78,17 +82,17 @@ export const ContactForm = () => {
         </Button>
       </div>
       <Snackbar
-        open={cantSend}
+        open={open !== null}
         autoHideDuration={6000}
         onClose={removeSnackBar}
       >
         <Alert
           variant="filled"
-          severity="error"
+          severity={open?.type}
           onClose={removeSnackBar}
           sx={{ width: '100%' }}
         >
-          Could not send contact
+          {open?.message}
         </Alert>
       </Snackbar>
     </form>
