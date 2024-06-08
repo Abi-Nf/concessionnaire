@@ -4,7 +4,6 @@ import {
   ReferenceInput,
   SelectInput,
   SimpleForm,
-  TabbedForm,
   TextInput,
 } from 'react-admin';
 
@@ -43,7 +42,9 @@ export const AppointmentEdit = () => (
       <TextInput type={'email'} name={'email'} source="email" disabled />
       <TextInput name={'tel'} source="tel" disabled />
       <DateInput name={'date'} source="date" disabled />
-      <ReferenceInput name={'carId'} source="carId" reference="car" disabled />
+      <ReferenceInput name={'carId'} source="carId" reference="car">
+        <SelectInput readOnly />
+      </ReferenceInput>
       <ReferenceInput name={'adminId'} source="adminId" reference="admin" />
     </SimpleForm>
   </Edit>

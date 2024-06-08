@@ -1,12 +1,12 @@
 import { DeleteButton, Show, SimpleShowLayout, TextField } from 'react-admin';
-
+import '../car-type/list.css';
 export const BrandShow = () => (
   <Show>
-    <SimpleShowLayout>
-      <TextField source="id" />
-      <TextField source="name" />
-      <TextField source="logoUrl" />
+    <SimpleShowLayout className="show">
+      <TextField source="id" className="show" />
+      <TextField source="name" className="show" />
+      <TextField source="logoUrl" className="show" />
     </SimpleShowLayout>
-    <DeleteButton label={'Delete'} />
+    <DeleteButton label={'Delete'} className="delete" />
   </Show>
 );

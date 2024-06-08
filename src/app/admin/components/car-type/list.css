@@ -1,0 +1,53 @@
+.custom-card {
+  background-color: black !important;
+  border-radius: 5px !important;
+  padding: 0.5rem !important;
+  width: 100%;
+}
+
+.custom-card-child {
+  color: #fff !important;
+  font-weight: 500 !important;
+  font-size: 1.1rem !important;
+}
+
+.custom-card-car {
+  background-color: black !important;
+  border-radius: 5px !important;
+  width: 100%;
+}
+
+.custom-card-child-car {
+  color: #fff !important;
+  font-weight: 500 !important;
+  font-size: 0.9rem !important;
+}
+
+.input {
+  background-color: #fff !important;
+}
+
+.show {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: flex-start;
+  align-items: baseline;
+  padding-left: 1rem;
+  font-weight: bold !important;
+  font-size: 1.4rem !important;
+  text-decoration: underline !important;
+}
+
+.delete {
+  justify-content: center;
+  font-size: 1.2rem !important;
+}
+
+.create {
+  margin-top: 3rem !important;
+}
+
+.black {
+  background-color: black !important;
+  color: #fff !important;
+}

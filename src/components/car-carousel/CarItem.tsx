@@ -57,7 +57,7 @@ export const CarItem = ({ data, isCurrent }: Props) => {
             </span>
           </div>
 
-          <div className="absolute bottom-[1rem] left-[4rem] backdrop-blur-md p-5 rounded-2xl">
+          <div className="absolute bottom-[1rem] left-[4rem] backdrop-blur-md border-2 border-opacity-15 border-white p-5 rounded-2xl">
             <div className="flex items-end gap-2">
               <h2 className={'text-5xl font-bold ' + carNameFont.className}>
                 {data.name}
@@ -82,16 +82,12 @@ export const CarItem = ({ data, isCurrent }: Props) => {
             href={'/car/' + data.id}
             variant="outlined"
             color="inherit"
-            className="backdrop-blur-2xl"
+            className="backdrop-blur-2xl rounded-2xl"
           >
             <span className="font-bold">More info</span>
           </Button>
           <AppointmentModal carId={data.id}>
-            <Button
-              variant="contained"
-              className="backdrop-blur-2xl"
-              color="inherit"
-            >
+            <Button variant="contained" className="rounded-2xl" color="inherit">
               <span className="text-black">Buy this one</span>
             </Button>
           </AppointmentModal>

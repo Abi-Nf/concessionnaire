@@ -2,14 +2,14 @@ import { AxiosRequestConfig } from 'axios';
 import { DataProvider } from 'react-admin';
 import { BaseApi } from './baseApi';
 
-const authorizationHeader: AxiosRequestConfig['headers'] = {
+const authorizationHeader = (): AxiosRequestConfig['headers'] => ({
   Authorization: `Bearer ${localStorage.getItem('token')}`,
-};
+});
 
 export const dataProvider: DataProvider = {
   // get a list of records based on sort, filter, and pagination
   getList: async (resource, params) => {
-    const baseApi = new BaseApi(resource, authorizationHeader);
+    const baseApi = new BaseApi(resource, authorizationHeader());
     const allResource: any[] = await baseApi.all();
     return {
       data: allResource,
@@ -20,7 +20,7 @@ export const dataProvider: DataProvider = {
   getOne: async (resource, params) => {
     const baseApi = new BaseApi(
       resource === 'car-image' ? 'car-image/object' : resource,
-      authorizationHeader,
+      authorizationHeader(),
     );
     const oneResource: any = await baseApi.get(params.id);
     return {
@@ -29,7 +29,7 @@ export const dataProvider: DataProvider = {
   },
   // get a list of records based on an array of ids
   getMany: async (resource, params) => {
-    const baseApi = new BaseApi(resource, authorizationHeader);
+    const baseApi = new BaseApi(resource, authorizationHeader());
     const manyResource: any = await baseApi.getManyById(params.ids);
     return {
       data: manyResource,
@@ -44,7 +44,7 @@ export const dataProvider: DataProvider = {
   },
   // create a record
   create: async (resource, params) => {
-    const baseApi = new BaseApi(resource, authorizationHeader);
+    const baseApi = new BaseApi(resource, authorizationHeader());
     const createResource: any = await baseApi.create(params.data);
     return {
       data: createResource,
@@ -52,7 +52,7 @@ export const dataProvider: DataProvider = {
   },
   // update a record based on a patch
   update: async (resource, params) => {
-    const baseApi = new BaseApi(resource, authorizationHeader);
+    const baseApi = new BaseApi(resource, authorizationHeader());
     const updateResource: any = await baseApi.update(params.id, {
       ...params.previousData,
       ...params.data,
@@ -66,7 +66,7 @@ export const dataProvider: DataProvider = {
   updateMany: (resource, params) => Promise.resolve({ data: [] }),
   // delete a record by id
   delete: async (resource, params) => {
-    const baseApi = new BaseApi(resource, authorizationHeader);
+    const baseApi = new BaseApi(resource, authorizationHeader());
     const deleteResource: any = await baseApi.delete(params.id);
 
     return {
@@ -75,7 +75,7 @@ export const dataProvider: DataProvider = {
   },
   // delete a list of records based on an array of ids
   deleteMany: async (resource, params) => {
-    const baseApi = new BaseApi(resource, authorizationHeader);
+    const baseApi = new BaseApi(resource, authorizationHeader());
     const deleteManyResource: any = await baseApi.deleteManyById(params.ids);
     return {
       data: deleteManyResource,

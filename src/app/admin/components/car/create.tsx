@@ -1,3 +1,4 @@
+import { RichTextInput } from 'ra-input-rich-text';
 import {
   BooleanInput,
   Create,
@@ -33,7 +34,7 @@ export const CarCreate = () => {
       <SimpleForm>
         <TextInput name={'name'} source={'name'} />
         <TextInput name={'model'} source={'model'} />
-        <TextInput name={'description'} source={'description'} />
+        <RichTextInput name={'description'} source={'description'} />
         <SelectInput
           name={'engineType'}
           source={'engineType'}

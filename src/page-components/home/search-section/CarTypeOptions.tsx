@@ -14,11 +14,12 @@ export const CarTypeOptions = ({ hook }: Props) => {
   });
 
   return (
-    <FormControl sx={{ minWidth: '6rem' }} size="small" variant="standard">
+    <FormControl sx={{ minWidth: '6rem' }} size="small" variant="outlined">
       <InputLabel id="select-type">Type</InputLabel>
       <Select
         label="Type"
         labelId="select-type"
+        variant={'outlined'}
         onChange={(v) => hook.handleTypeSelect(v.target.value as string)}
       >
         <MenuItem value="">None</MenuItem>

@@ -22,10 +22,10 @@ export const SearchBar = ({ hook }: Props) => {
     <div className="flex gap-2 items-end z-10 px-5 py-3 bg-zinc-800 rounded-xl shadow-lg">
       <ThemeProvider theme={darkTheme}>
         <TextField
-          placeholder="Search for vehicles"
+          label="Search for vehicles"
           type="search"
           size="small"
-          variant="standard"
+          variant="outlined"
           onChange={hook.handleQuery}
         />
 
@@ -33,7 +33,7 @@ export const SearchBar = ({ hook }: Props) => {
           inputMode="decimal"
           label="Min price"
           size="small"
-          variant="standard"
+          variant="outlined"
           sx={{ width: '10rem' }}
           onChange={hook.handleMinPrice}
         />
@@ -42,16 +42,17 @@ export const SearchBar = ({ hook }: Props) => {
           inputMode="decimal"
           label="Max price"
           size="small"
-          variant="standard"
+          variant="outlined"
           sx={{ width: '10rem' }}
           onChange={hook.handleMaxPrice}
         />
 
-        <FormControl sx={{ minWidth: '6rem' }} size="small" variant="standard">
+        <FormControl sx={{ minWidth: '8rem' }} size="small" variant="outlined">
           <InputLabel id="select-motor">Motor</InputLabel>
           <Select
             label="Motor"
             labelId="select-motor"
+            variant={'outlined'}
             onChange={(v) => hook.handleMotorSelect(v.target.value as string)}
           >
             <MenuItem value="">None</MenuItem>
